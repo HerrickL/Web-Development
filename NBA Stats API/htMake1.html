@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="../../favicon.ico">
+    <title>How-To NBA API</title>
+    <!-- Bootstrap core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="htStyle.css" rel="stylesheet">
+    <script src="../../assets/js/ie-emulation-modes-warning.js"></script>
+  </head>
+  <body>
+    <div class="blog-masthead">
+      <div class="container">
+        <nav class="blog-nav">
+          <a class="blog-nav-item" href="htHome.html">Home</a>
+          <a class="blog-nav-item" href="htAbout.html">About</a>
+        </nav>
+      </div>
+    </div>
+    <div>
+    <div class = "larger-container">
+      <div class="blog-header">
+        <h1 class="blog-title">How-To: NBA Stats API</h1>
+        <p class="lead blog-description">Connect with and use the NBA Stats API</p>
+      </div>
+    </div>
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-8 blog-main">
+          <div class="blog-post">
+            <h2 class="blog-post-title">Making Use of the Data</h2><br>
+            <h3> Preplanned Input</h3>
+            <p>In this section, I will demonstrate how to create a table that shows average points and average assists of all of the players on a team. To do this, I will use the common player info URL. I have broken down the process into these three steps:
+              <ol>
+                <li>Connect players' names to their IDs</li>
+                <li>Prepare your url</li>
+                <li>Make a request to the NBA database</li>
+                <li>Put the data recieved into a table</li>
+              </ol><br>
+            <h4> Step 1: Connect players' names to their IDs</h4>
+            As stated prior, since identifying players within URL parameters requires knowing the player's numerical ID, I would suggest creating an object or dictionary that keeps track of all of the player's IDs. In this example, I used JavaScript to create an object where the parameters were players and their value was the player's ID.</p>
+            <img src = "images/WarriorsIDs.PNG" width = "100%" alt = "Object for IDs">
+            <br><br>
+            <h4> Step 2: Prepare your url</h4>
+            <p>I have broken up the following steps into separate functions to better highlight what happens in each step of the process. These steps could be combined into fewer functions if you choose. The first step is to create the URL, including the correct parameters. This URL will then be passed on to get the data from the NBA server and then put into a table. This step (and by definition, all further steps) will be called for each player in my object holding player IDs.
+            </p>
+            <img src = "images/getSearch.PNG" width = "100%" alt = "Get Search Function"><br><br>
+            <h4> Step 3: Make a request to the NBA database</h4>
+            <p>Next, make a request to the URL and immediately call a function that is able to read the data returned from the URL. If you are receiving a CORS error at this step, please refer to the previous page for a potential solution and more information on this error. The data is then sent, in object form, to be made into a table.
+            </p>
+            <img src = "images/getData.PNG" width = "100%" alt = "Get Data Function">
+            <br><br>
+            <h4> Step 4: Put the data recieved into a table</h4>
+            <p> Here is where understanding the returns from your request comes in handy. If we are familiar with what will be returned when requesting common player info, we then know that in the first resultSet within the first element of its rowSet in the third element of the array is the player's last name. The fifteenth element is the player's position. Similarly, the second element of resultSet within the first element of its rowSet in the fourth and fifth element are average points and average assists for that player. Here I have separated out these pieces of data into their own variables to make a better distinction to readers of what equals what. This is not required and could be directly written into the innerHTML section.
+            </p>
+            <p> Once the variables for the table have been assigned, you can create your table as you see fit. Here I have made a row for each player. Since this is an iterative process inside step 2, I only need to create a single row with its columns filled in for the current player.          
+            </p>
+            <img src = "images/makeTable.PNG" width = "100%" alt = "Table Making Function">
+            <br><br>
+            <p> And there you have it!  
+            </p>
+            <img src = "images/dubsTable.PNG" width = "100%" alt = "Warriors HTML Table">
+            <br>
+          </div>  
+          <nav>
+            <ul class="pager">
+              <li><a href="htCrossDom.html">Previous</a></li>
+              <li><a href="htMake2.html">Next</a></li>
+            </ul>
+          </nav>
+        </div><!-- /.blog-main -->
+        <div class="col-sm-3 col-sm-offset-1 blog-sidebar">
+          <div class="sidebar-module">
+            <h4>Topic Pages</h4>
+            <ol class="list-unstyled">
+              <li><a href="htGathering.html">Gathering the Parameters</a></li>
+              <li><a href="htURLs.html">Understanding the URLs</a></li>
+              <li><a href="htReturn.html">Understanding the Return</a></li>
+              <li><a href="htCrossDom.html">Cross Domain Requests</a></li>
+              <li><a href="htMake1.html">Making use of the Data Part 1</a></li>
+              <li><a href="htMake2.html">Making use of the Data Part 2</a></li>
+            </ol>
+          </div>
+        </div><!-- /.blog-sidebar -->
+      </div><!-- /.row -->
+    </div><!-- /.container -->
+    <footer class="blog-footer">
+      <p>Page built with <a href="http://getbootstrap.com">Bootstrap</a> by <a href="https://twitter.com/mdo">@mdo</a>.</p>
+      <p>
+        <a href="#">Back to top</a>
+      </p>
+    </footer>
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <script src="../../dist/js/bootstrap.min.js"></script>
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
+  </body>
+</html>

@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="../../favicon.ico">
+    <title>How-To NBA API</title>
+    <!-- Bootstrap core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="htStyle.css" rel="stylesheet">
+    <script src="../../assets/js/ie-emulation-modes-warning.js"></script>
+  </head>
+  <body>
+    <div class="blog-masthead">
+      <div class="container">
+        <nav class="blog-nav">
+          <a class="blog-nav-item" href="htHome.html">Home</a>
+          <a class="blog-nav-item" href="htAbout.html">About</a>
+        </nav>
+      </div>
+    </div>
+    <div>
+    <div class = "larger-container">
+      <div class="blog-header">
+        <h1 class="blog-title">How-To: NBA Stats API</h1>
+        <p class="lead blog-description">Connect with and use the NBA Stats API</p>
+      </div>
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-8 blog-main">
+          <div class="blog-post">
+            <h2 class="blog-post-title">Understanding the URLs</h2>
+            <p>There are multiple endpoint URLs used in making a query to the NBA API. Since there is no official documentation, it isn't perfectly apparent just how many endpoints there are. For the purpose of this documentation, I have included endpoints identified through a <a href= "https://www.npmjs.com/package/nba">project by Nick Bottomley, who created a Node.js wrapper around the NBA's API.</a>  I have further provided all of the needed URL parameters through testing each endpoint and checking for errors.</p>
+            <br>
+            <h4><font color=000099>Player Profile</font></h4>
+            <p> <b>url</b>: http://stats.nba.com/stats/playerprofile
+              <br>
+              <b>Needed Parameters</b>: LeagueID, PlayerID, Season, SeasonType, GraphStartSeason, GraphEndSeason, GraphStat
+              <br>
+            </p>
+            <br>
+            <h4><font color=000099>Common Info About a Player</font></h4>
+            <p> <b>url</b>: http://stats.nba.com/stats/commonplayerinfo
+              <br>
+              <b>Needed Parameters</b>: Player ID
+              <br>
+            </p>
+            <br>
+            <h4><font color=000099>Team Data by General Splits</font></h4>
+            <p> <b>url</b>: <font size = "3">http://stats.nba.com/stats/teamdashboardbygeneralsplits</font>
+              <br>
+              <b>Needed Parameters</b>: SeasonType, TeamID, MeasureType, PerMode, PlusMinus, PaceAdjust, Rank, Season, Outcome, Location, Month, SeasonSegment, DataFrom, DateTo, OpponentTeamID, CsConference, VsDivision, GameSegment, Period, LastNGames
+              <br>
+            </p>
+            <br>
+            <h4><font color=000099>Common Player Data by General Splits</font></h4>
+            <p> <b>url</b>: <font size = "3">http://stats.nba.com/stats/playerdashboardbygeneralsplits</font>
+              <br>
+              <b>Needed Parameters</b>: MeasureType, PerMode, PlusMinus, PaceAdjust, Rank, Season, SeasonType, PlayerID, Outcome, Location, Month, SeasonSEgment, DateFrom, DateTo, OpponentTeamID, VsConference, VsDivision, GameSegment, Period, LastNGames
+              <br>
+            </p>
+            <br>
+            <h4><font color=000099>Shot Chart</font></h4>
+            <p> <b>url</b>: http://stats.nba.com/stats/shotchartdetail
+              <br>
+              <b>Needed Parameters</b>: SeasonType, TeamID, PlayerID, GameID, Outcome, Location, Month, SeasonSegment, DateFrom, DateTo, OpponentTeamID, VsConference, VsDivision, Position, RookieYear, GameSegment, Period, LastNGames, ContextMeasure
+              <br>
+            </p>
+            <br>
+            <h4><font color=000099>Scoreboard</font></h4>
+            <p> <b>url</b>: http://stats.nba.com/stats/scoreboard/
+              <br>
+              <b>Needed Parameters</b>: GameDate, LeagueID, DayOffset
+              <br>
+            </p>
+            <br>
+            <h4><font color=000099>Play by Play of Game</font></h4>
+            <p> <b>url</b>: http://stats.nba.com/stats/playbyplay
+              <br>
+              <b>Needed Parameters</b>: GameID, StartPeriod, EndPeriod
+              <br>
+            </p>
+            <br>
+            <h4><font color=000099>Boxscore of Game</font></h4>
+            <p> <b>url</b>: http://stats.nba.com/stats/boxscorescoring
+              <br>
+              <b>Needed Parameters</b>:GameID, StartPeriod, EndPeriod, StartRange, EndRange, RangeType
+              <br>
+            </p>
+            <br>
+          </div>  
+          <nav>
+            <ul class="pager">
+              <li><a href="htGathering.html">Previous</a></li>
+              <li><a href="htReturn.html">Next</a></li>
+            </ul>
+          </nav>
+        </div><!-- /.blog-main -->
+        <div class="col-sm-3 col-sm-offset-1 blog-sidebar">
+          <div class="sidebar-module">
+            <h4>Topic Pages</h4>
+            <ol class="list-unstyled">
+              <li><a href="htGathering.html">Gathering the Parameters</a></li>
+              <li><a href="htURLs.html">Understanding the URLs</a></li>
+              <li><a href="htReturn.html">Understanding the Return</a></li>
+              <li><a href="htCrossDom.html">Cross Domain Requests</a></li>
+              <li><a href="htMake1.html">Making use of the Data Part 1</a></li>
+              <li><a href="htMake2.html">Making use of the Data Part 2</a></li>
+            </ol>
+          </div>
+        </div><!-- /.blog-sidebar -->
+      </div><!-- /.row -->
+    </div><!-- /.container -->
+    <footer class="blog-footer">
+      <p>Page built with <a href="http://getbootstrap.com">Bootstrap</a> by <a href="https://twitter.com/mdo">@mdo</a>.</p>
+      <p>
+        <a href="#">Back to top</a>
+      </p>
+    </footer>
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <script src="../../dist/js/bootstrap.min.js"></script>
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
+  </body>
+</html>

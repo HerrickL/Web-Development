@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="../../favicon.ico">
+    <title>How-To NBA API</title>
+    <!-- Bootstrap core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="htStyle.css" rel="stylesheet">
+    <script src="../../assets/js/ie-emulation-modes-warning.js"></script>
+  </head>
+  <body>
+    <div class="blog-masthead">
+      <div class="container">
+        <nav class="blog-nav">
+          <a class="blog-nav-item" href="htHome.html">Home</a>
+          <a class="blog-nav-item" href="htAbout.html">About</a>
+        </nav>
+      </div>
+    </div>
+    <div>
+    <div class = "larger-container">
+      <div class="blog-header">
+        <h1 class="blog-title">How-To: NBA Stats API</h1>
+        <p class="lead blog-description">Connect with and use the NBA Stats API</p>
+      </div>
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-8 blog-main">
+          <div class="blog-post">
+            <h2 class="blog-post-title">Gathering the Needed Parameters</h2>
+           <!-- Content -->
+            <p>NBA Stats does not currently identify players, teams, leagues, etc by name inside of a URL. Instead, numerical IDs and abbreviations are assigned to each parameter. Although it is possible to find dictionaries online with the keys to the parameters, it is highly recommended that you become familiar with how to obtain this information directly. This way, your site will not at the whims of others' correctness and can be updated when new players enter the league or any information is changed in the NBA Stats database. How to find all of the information needed to request information through the NBA Stats API is detailed below.</p>
+            <br>
+            <h4><font color=000099>PlayerID</font></h4>
+              <p><b>What it is</b>: This is a 6 digit (currently) ID, specific to each individual player, past and present in the league. 
+                <br><br>
+                <b>How to find it</b>: Navigate to the <a href="http://stats.nba.com/players/">Player Index</a> page. Click the link for the chosen player. Open the menu for "Additional Player Stats." This is found underneath the basketball player's picture and above the video player. Inspect the element for "stats." The HREF will include the player's number. Similarly, if you click the stats menu option that you were just inspecting, the URL will include the player's ID.
+              </p>
+              <img src = "images/PlayerID.PNG" width ="100%" alt ="Player ID in URL">
+            <br><br>
+            <h4><font color=000099>Position</font></h4>
+              <p><b>What it is</b>:  Filters based off of player position.
+                <br><br>
+                <b>How to execute it</b>: Options include: 'Guard,' 'Center,' or 'Forward.'
+              </p>
+              <br>
+              <h4><font color=000099>RookieYear</font></h4>
+              <p><b>What it is</b>:  Further identifies a player based off of their first season in the league. </p>
+              <br>
+              <p><b>How to execute it</b>: Date should be displayed as a four digit hyphen two digit number (example: 2014-15).
+              </p>
+              <br>
+            <h4><font color=000099>TeamID, OpponentTeamID</font></h4>
+              <p><b>What it is</b>: This is a 10 digit (currently) ID specific to each individual team, past and present, in the league. 
+                <br><br>
+                <b>How to find it</b>: Navigate to <a href="http://stats.nba.com/teams/">Team Index</a> page. You can inspect either the element of the name/logo of the team or the "stats" link of the team. Either option will include the team ID number in the HREF. Similarly, if you click either link, you will see the team ID number in the URL for the stats page.
+              </p>
+              <br>
+              <img src = "images/TeamID.PNG" width = "100%" alt = "Team ID in URL">
+            <br><br>
+            <h4><font color=000099>GameID</font></h4>
+              <p><b>What it is</b>: This is a numerical ID individual to each game played, past and present, in the league. 
+                <br><br>
+                <b>How to find it</b>: Navigate to the <a href="http://stats.nba.com/scores">Scores</a> page. Choose the calendar date for the game that you are interested in. Underneath the representation of the game score, there will be a link for "box score." If you inspect this element, you will see that the link includes the game ID number.
+              </p>
+            <img src = "images/GameID.PNG" width = "100%" alt = "Game ID in href">
+            <br><br>
+            <h4><font color=000099>LeagueID</font></h4>
+              <p><b>What it is</b>: This is a two digit ID to identify which league you would like to see data from. 00 is the representation for the NBA. Currently it does not appear that the NBA Stats API supports identification for the WNBA or Development League. 
+                <br><br>
+                <b>How to execute it</b>:  This is a bit harder to find through inspecting elements.  For me, I found it through trial and error by pasting a url that requires this variable into my browser's address bar and reading the error message - '^\d{2}$'.  <b>00</b> is the appropriate identifier for all NBA purposes.
+              </p>
+            <br>
+            <h4><font color=000099>SeasonType</font></h4>
+              <p><b>What it is</b>: This identifies data from the regular season, all star break, or playoffs. 
+                <br><br>
+                <b>How to execute it</b>:  For regular season: 'Regular Season.' For playoffs: 'Playoffs.' For All Star break: 'All Star.'
+              </p>
+            <br>
+            <h4><font color=000099>Season</font></h4>
+              <p><b>What it is</b>: Now it starts becoming a bit more intuitive. Season is a four digit to two digit representation of the season you would like to get data from. Since the seasons start in October and end in May + Playoffs, a season covers two year dates. 
+                <br><br>
+              <b>How to execute it</b>: This needs to be a four digit hyphen two digit number representation (example: 2014-15).
+              </p>
+            <br>
+            <h4><font color=000099>GraphStartSeason, GraphEndSeason</font></h4>
+              <p><b>What it is</b>:  GraphStartSeason and GraphEndSeason allow you to pull stats from multiple seasons. 
+                <br><br>
+                <b>How to execute it</b>: Similar to other year-related variables, each season is represented by four digits slash two digits (example: 2004-05).
+              </p>
+            <br>
+            <h4><font color=000099>GraphStat</font></h4>
+              <p><b>What it is</b>: This filters to a specific stat about a player or team. Options are points, rebounds, assists, turnovers, blocks and PIE. PIE is an improved EFF rating and shows what percentage of game events (PTS, REB, AST, TOV, etc.) a player or team achieved. 
+                <br><br>
+                <b>How to execute it</b>: Most of the abbreviations used in the NBA are options here. Options for this include: FGM, FGA, FG_PCT, FG3M, FG3A, FTM, FTA, FT_PCT, OREB, DREB, REB, AST, TOV, STL, BLK, PF, PTS, and PIE.
+              </p>
+            <br>
+            <h4><font color=000099>IsOnlyCurrentSeason</font></h4>
+              <p><b>What it is</b>: Filters true or false whether or not you will allow data from only this season or not. 
+              <br><br>
+                <b>How to execute it</b>: For all true/false values, use 1 or 0.
+              </p>
+            <br>
+            <h4><font color=000099>MeasureType</font></h4>
+              <p><b>What it is</b>: Filters used to show data about base stats, advanced stats, misc stats, four factors, scoring, opponent, or usage. 
+                <br><br>
+                <b>How to execute it</b>: Options are: 'Base,' 'Four Factors,' 'Scoring,' 'Opponent,' or 'Usage.'
+              </p>
+            <br>
+            <h4><font color=000099>PerMode</font></h4>
+              <p><b>What it is</b>: Filters where to calculate the stats from totals, minutes, minutes per ..., possessions, and plays. 
+                <br><br>
+                <b>How to execute it</b>: Options are: 'Totals,' 'PerGame,' 'MinutesPer,' 'Per48,' 'Per40,' 'Per36,' 'PerMinute,' 'PerPossession,' 'PerPlay,' 'Per100Possessions,' or 'Per100Plays.'
+              </p>
+            <br>
+            <h4><font color=000099>PlusMinus</font></h4>
+              <p><b>What it is</b>: Filters for whether or not to show or consider plus/minus in the data. 
+                <br><br>
+                <b>How to execute it</b>: Unlike above, this is not a true or false and should be identified with a Y or N.
+              </p>
+            <br>
+            <h4><font color=000099>PaceAdjust</font></h4>
+              <p><b>What it is</b>: This filters whether or not adjusted pace is considered in the stats returned. Adjusted pace determines points per possession. Since some teams play at a slower pace than others, this adjusts that data. 
+                <br><br>
+                <b>How to execute it</b>: This is not a true or false and should be identified with a Y or N.
+              </p>
+            <br>
+            <h4><font color=000099>Rank</font></h4>
+              <p><b>What it is</b>: This filters whether or not to include team or player rank within the league for the given season. 
+                <br><br>
+                <b>How to execute it</b>: This is not a true or false and should be identified with a Y or N.
+              </p>
+            <br>
+            <h4><font color=000099>Outcome</font></h4>
+              <p><b>What it is</b>: Filter for wins or losses.
+                <br><br>
+                <b>How to execute it</b>: Wins are identified with a W, while losses are identified with an L.
+              </p>
+            <br>
+            <h4><font color=000099>Location</font></h4>
+              <p><b>What it is</b>: Filter for road games or home games.
+                <br><br>
+                <b>How to execute it</b>: Road games are identified with Road, while home games are identified with Home.
+              </p>
+            <br>
+            <h4><font color=000099>Month</font></h4>
+              <p><b>What it is</b>: Filters to a specific month.
+                <br><br>
+                <b>How to execute it</b>: Months are represented in two digit format.
+              </p>
+            <br>
+            <h4><font color=000099>SeasonSegment</font></h4>
+              <p><b>What it is</b>: Filters to the first half of the season (pre all-star break) and the second half (post all-star break). 
+                <br><br>
+                <b>How to execute it</b>: The first half is represented by 'Pre All-Star.' The Second half is represented by 'Post All-Star.'
+              </p>
+            <br>
+            <h4><font color=000099>DateFrom, DateTo</font></h4>
+              <p><b>What it is</b>: Filters to specify date ranges to collect data from. 
+                <br><br>
+                <b>How execute it</b>: Dates are represented in a MM/DD/YYYY digit format (example: 04/30/2015).
+              </p>
+            <br>
+            <h4><font color=000099>StartRange, EndRange</font></h4>
+              <p><b>What it is</b>: This is a filter to specify a range for a category.
+                <br><br>
+                <b>How execute it</b>: This is represented by a digit.
+              </p>
+            <br>
+            <h4><font color=000099>RangeType</font></h4>
+              <p><b>What it is</b>: This is a filter to specify a category to consider a specific range from.
+                <br><br>
+                <b>How execute it</b>: Options include: 'FGM,' 'FGA,' 'FG_PCT,' 'FG3,' 'FG3A,' 'FG3_PCT,' 'PF,' 'EFG_PCT,' 'TS_PCT,' 'PTS_OFF_TOV,' 'PTS_2ND_CHANCE,' or 'PF.'
+              </p>
+            <br>
+            <h4><font color=000099>VsConference</font></h4>
+              <p><b>What it is</b>: Filters to show what conference the opponent is from. 
+                <br><br>
+                <b>How to execute it</b>: Options are 'West' or 'East'.
+              </p>
+            <br>
+            <h4><font color=000099>VsDivision</font></h4>
+              <p><b>What it is</b>: This is a filter to show what division the opponent is from. 
+                <br><br>
+                <b>How to execute it</b>: Options are: 'Atlantic,' 'Central,' 'Northwest,' 'Pacific,' 'Southeast,' 'Southwest,' 'East,' or 'West.'
+              </p>
+            <br>
+            <h4><font color=000099>GameSegment</font></h4>
+              <p><b>What it is</b>: Filters to show which general part of the game to grab data from. 
+                <br><br>
+                <b>How to execute it</b>: Options are 'First Half,' 'Second Half,' or 'Overtime.'
+              </p>
+            <br>
+            <h4><font color=000099>Period</font></h4>
+              <p><b>What it is</b>: Filters to show which period of a game or games to grab data from. 
+                <br><br>
+                <b>How execute it</b>: Options are '1,' '2,' '3,' or '4.'
+              </p>
+            <br>
+            <h4><font color=000099>StartPeriod, EndPeriod</font></h4>
+              <p><b>What it is</b>: Similar to above, but this filters between a starting and ending point using periods. 
+                <br><br>
+                <b>How to execute it</b>: Options are '1', '2', '3', or '4'.
+              </p>
+            <br>
+            <h4><font color=000099>LastNGames</font></h4>
+              <p><b>What it is</b>: Filters the amount of games. 
+                <br><br>
+                <b>How to execute it</b>:  This is a digit.
+              </p>
+            <br>
+            <h4><font color=000099>DayOffset</font></h4>
+              <p><b>What it is</b>: Filters for plus or minus 0 or 1 days included in the search timeframe. This is especially helpful if you do not know the exact date of a game. 
+                <br><br>
+                <b>How to execute it</b>: Options include: '-1,' '0,' or '1.'
+              </p>
+              <br>
+              <h4><font color=000099>ContextMeasure</font></h4>
+              <p><b>What it is</b>: Uses below listed context to display data based off of that context. 
+                <br><br>
+                <b>How to execute it</b>: Options include: 'FGM,' 'FGA,' 'FG_PCT,' 'FG3,' 'FG3A,' 'FG3_PCT,' 'PF,' 'EFG_PCT,' 'TS_PCT,' 'PTS_OFF_TOV,' 'PTS_2ND_CHANCE,' or 'PF.'
+              </p>
+          </div>  
+          <nav>
+            <ul class="pager">
+              <li><a href="htHome.html">Previous</a></li>
+              <li><a href="htURLs.html">Next</a></li>
+            </ul>
+          </nav>
+        </div><!-- /.blog-main -->
+        <div class="col-sm-3 col-sm-offset-1 blog-sidebar">
+          <div class="sidebar-module">
+            <h4>Topic Pages</h4>
+            <ol class="list-unstyled">
+              <li><a href="htGathering.html">Gathering the Parameters</a></li>
+              <li><a href="htURLs.html">Understanding the URLs</a></li>
+              <li><a href="htReturn.html">Understanding the Return</a></li>
+              <li><a href="htCrossDom.html">Cross Domain Requests</a></li>
+              <li><a href="htMake1.html">Making use of the Data Part 1</a></li>
+              <li><a href="htMake2.html">Making use of the Data Part 2</a></li>
+            </ol>
+          </div>
+        </div><!-- /.blog-sidebar -->
+      </div><!-- /.row -->
+    </div><!-- /.container -->
+    <footer class="blog-footer">
+      <p>Page built with <a href="http://getbootstrap.com">Bootstrap</a> by <a href="https://twitter.com/mdo">@mdo</a>.</p>
+      <p>
+        <a href="#">Back to top</a>
+      </p>
+    </footer>
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <script src="../../dist/js/bootstrap.min.js"></script>
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
+  </body>
+</html>

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="../../favicon.ico">
+    <title>How-To NBA API</title>
+    <!-- Bootstrap core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="htStyle.css" rel="stylesheet">
+    <script src="../../assets/js/ie-emulation-modes-warning.js"></script>
+  </head>
+  <body>
+    <div class="blog-masthead">
+      <div class="container">
+        <nav class="blog-nav">
+          <a class="blog-nav-item" href="htHome.html">Home</a>
+          <a class="blog-nav-item" href="htAbout.html">About</a>
+        </nav>
+      </div>
+    </div>
+    <div>
+    <div class = "larger-container">
+      <div class="blog-header">
+        <h1 class="blog-title">How-To: NBA Stats API</h1>
+        <p class="lead blog-description">Connect with and use the NBA Stats API</p>
+      </div>
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-8 blog-main">
+          <div class="blog-post">
+            <h2 class="blog-post-title">Cross Domain Requests</h2>
+            <p>Now that you can properly build and read NBA stats queries, it's time to start coding. One of the first set of problems you may run into are cross domain errors. My first attempt at creating code (using JavaScript) that would return results from a HTTP request instead gave me the error message below: </p>
+            <code><font size = "2">Cross-Origin Request Blocked: The Same Origin Policy disallows reading the remote resource at http://stats.nba.com/stats/commonplayerinfo?PlayerID=201939. (Reason: CORS header 'Access-Control-Allow-Origin' missing)</font></code>
+            <br><br>
+            <p>Here is what is happening when you receive this error: SOP stands for Same Origin Policy and was originally created as a security measure that would not allow cross origin resource sharing, or CORS. CORS is a security measure that allows for scripts to make cross-site requests. To use this feature, the hosting server needs to return data including a special CORS header. The server that is hosting this API does not currently return this proper header. I will not go further into detail about the server side of CORS, but if you are interested you can read the Mozilla documentation <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Access_control_CORS">here</a>. This means, in theory, one can only make requests from the same domain. This isn't really helpful in dealing with an API, but luckily there are ways to work around this.</p>
+            <p>In preliminary searches, since I was coding in JavaScript, most of the solutions I found suggested using JSONP with jQuery. To ensure that this solution works for you, you are only allowed to use GET as your request method. To test if this solution worked for me, I used the method <a href= "http://api.jquery.com/jquery.getjson/">getJSON()</a>.  As per the documentation about JSONP, I included a callback parameter to my URL. Lastly, I printed to the console to make sure that my results were what I would expect before attempting any further code. So what's happening here is that a GET request is being made through the URL provided in the first parameter of getJSON. That request is returning a script block through JSONP that holds the object with our data. The second parameter of getJSON will call a function that reads that script block.</p>
+            <img src = "images/jsonp.PNG" width = "100%" alt = "coding example">
+            <img src = "images/accessSuccess.PNG" width = "100%" alt = "Console Success">
+            <br><br>
+            <p>Although this is a quick fix and a solution I find acceptable for this API (while coding in JavaScript), I want to detail the concerns I have with it for other projects and caution usage. JSONP does not do any security checks on the site that you are requesting data from. If the site was malicious, you would have no guard against an attack while accessing their server, so make sure the site you're requesting from is trustworthy. Lastly, if the server you were requesting data from became compromised, your site could become compromised as well.</p>
+          </div>  
+          <nav>
+            <ul class="pager">
+              <li><a href="htReturn.html">Previous</a></li>
+              <li><a href="htMake1.html">Next</a></li>
+            </ul>
+          </nav>
+        </div><!-- /.blog-main -->
+        <div class="col-sm-3 col-sm-offset-1 blog-sidebar">
+          <div class="sidebar-module">
+            <h4>Topic Pages</h4>
+            <ol class="list-unstyled">
+              <li><a href="htGathering.html">Gathering the Parameters</a></li>
+              <li><a href="htURLs.html">Understanding the URLs</a></li>
+              <li><a href="htReturn.html">Understanding the Return</a></li>
+              <li><a href="htCrossDom.html">Cross Domain Requests</a></li>
+              <li><a href="htMake1.html">Making use of the Data Part 1</a></li>
+              <li><a href="htMake2.html">Making use of the Data Part 2</a></li>
+            </ol>
+          </div>
+        </div><!-- /.blog-sidebar -->
+      </div><!-- /.row -->
+    </div><!-- /.container -->
+    <footer class="blog-footer">
+      <p>Page built with <a href="http://getbootstrap.com">Bootstrap</a> by <a href="https://twitter.com/mdo">@mdo</a>.</p>
+      <p>
+        <a href="#">Back to top</a>
+      </p>
+    </footer>
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <script src="../../dist/js/bootstrap.min.js"></script>
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
+  </body>
+</html>

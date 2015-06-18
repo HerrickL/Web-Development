@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="../../favicon.ico">
+    <title>How-To NBA API</title>
+    <!-- Bootstrap core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="htStyle.css" rel="stylesheet">
+    <script src="../../assets/js/ie-emulation-modes-warning.js"></script>
+  </head>
+  <body>
+    <div class="blog-masthead">
+      <div class="container">
+        <nav class="blog-nav">
+          <a class="blog-nav-item active" href="htHome.html">Home</a>
+          <a class="blog-nav-item" href="htAbout.html">About</a>
+        </nav>
+      </div>
+    </div>
+    <div class = "larger-container">
+      <div class="blog-header">
+        <h1 class="blog-title">How-To: NBA Stats API</h1>
+        <p class="lead blog-description">Connect with and use the NBA Stats API</p>
+      </div>
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-8 blog-main">
+          <div class="blog-post">
+            <h2 class="blog-post-title">Introduction</h2>
+            <p>In 2013 the NBA made their stats database free for the public to access. This database includes both current and past season stats for all players, teams, and games in league's 69-year history. Previously, fans and all but a select few media outlets had no comprehensive database to reference, and typically relied on their own notes to keep track of stats for any comparisons not provided by the league. This recent access has been an exciting and monumental development for anyone from relative newcomers to die-hard fans who want to throw their voice into the online basketball conversation.</p>
+            <br>
+            <p>Although open and ready for use, at this time there is still no official (and very sparse unofficial) documentation for access and use of the NBA stats API. What little documentation does exist is either unfinished or hidden behind paywalls.  This how-to goes over how to prepare to connect to the API, avoid cross-domain request errors, access the data received, and put that data to use.</p>
+             <hr>
+            <h2>Prior To This How-To</h2>
+            <p>This documentation requires you to have basic knowledge in HTML, JavaScript, jQuery, and some previous experience working with APIs. It is helpful but not required to have a basic understanding of NBA basketball terms, players, and teams. Before getting started, it is recommended to take a few minutes to become familiar with  <a href= "http://stats.nba.com/">stats.nba.com</a> as that is the point of reference for this guide.</p>
+          </div>  
+          <nav>
+            <ul class="pager">
+              <li><a href="htGathering.html">Next</a></li>
+            </ul>
+          </nav>
+        </div><!-- /.blog-main -->
+        <div class="col-sm-3 col-sm-offset-1 blog-sidebar">
+          <div class="sidebar-module">
+            <h4>Topic Pages</h4>
+            <ol class="list-unstyled">
+              <li><a href="htGathering.html">Gathering the Parameters</a></li>
+              <li><a href="htURLs.html">Understanding the URLs</a></li>
+              <li><a href="htReturn.html">Understanding the Return</a></li>
+              <li><a href="htCrossDom.html">Cross Domain Requests</a></li>
+              <li><a href="htMake1.html">Making use of the Data Part 1</a></li>
+              <li><a href="htMake2.html">Making use of the Data Part 2</a></li>
+            </ol>
+          </div>
+        </div><!-- /.blog-sidebar -->
+      </div><!-- /.row -->
+    </div><!-- /.container -->
+    <footer class="blog-footer">
+      <p>Page built with <a href="http://getbootstrap.com">Bootstrap</a> by <a href="https://twitter.com/mdo">@mdo</a>.</p>
+      <p>
+        <a href="#">Back to top</a>
+      </p>
+    </footer>
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <script src="../../dist/js/bootstrap.min.js"></script>
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
+  </body>
+</html>

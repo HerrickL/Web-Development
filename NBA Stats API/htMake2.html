@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="../../favicon.ico">
+    <title>How-To NBA API</title>
+    <!-- Bootstrap core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="htStyle.css" rel="stylesheet">
+    <script src="../../assets/js/ie-emulation-modes-warning.js"></script>
+  </head>
+  <body>
+    <div class="blog-masthead">
+      <div class="container">
+        <nav class="blog-nav">
+          <a class="blog-nav-item" href="htHome.html">Home</a>
+          <a class="blog-nav-item" href="htAbout.html">About</a>
+        </nav>
+      </div>
+    </div>
+    <div>
+    <div class = "larger-container">
+      <div class="blog-header">
+        <h1 class="blog-title">How-To: NBA Stats API</h1>
+        <p class="lead blog-description">Connect with and use the NBA Stats API</p>
+      </div>
+    </div>
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-8 blog-main">
+          <div class="blog-post">
+            <h2 class="blog-post-title">Making Use of the Data</h2><br>
+            <h3> Working With User Input</h3>
+            <p>Believe it or not, if you can successfully implement the concepts from the previous pages, you have already done the hardest parts. Working with filters based off of user input isn't that much of a change to any code you have already written. Depending on which types of filter options you want to give a user, you will either be adding a filtering step prior to preparing your URL and/or after making a request to the NBA database. If you are filtering based off of information found in a local object or variable then you will most likely want to filter before preparing your URL. On the other hand, if you are filtering based off of non-local variables or object parameters, you will want to filter after requesting and receiving your data from the NBA database. This option means you need to be careful to only offer filter options that will be returned within the data you have chosen to select, otherwise your filters will not be effective.</p>
+            <br>
+            <p>I will continue with the example from the previous page using common player info and the previously implemented object with player IDs. My following steps for implementation now look like this:
+              <ol>
+                <li>Connect players' names to their IDs</li>
+                <li>Collect user input</li>
+                <li>Filter based off of user input</li>
+                <li>Prepare your url</li>
+                <li>Make a request to the NBA database</li>
+                <li>Put the data recieved into a table</li>
+              </ol>
+            <p>Since I covered steps 1, 4, 5, and 6 on the previous page, I will only focus on steps 2 and 3 here.</p>
+            <br>
+            <h4>Filter, filter, filter!</h4>
+            <p>The first step in making a filter is to create the options for user input. For this example I used drop-down menus, but any type of selection is fine. If you are allowing the user to type their own option, be very clear about which type of options are available. Depending on the URL you have chosen for your request, you will get a return that is unique to that request For example, if your request only returns data on players currently active, make sure the user knows not to input a retired player.</p>
+            <img src= "images/playerSelect.PNG" width= "100%" alt= "html form select">
+            <br><br>
+            <p>After you have provided options for user input, it's time to collect the input. For this, I used a combination of <code>getElementbyID()</code> and the <code>selectedIndex</code> property to access the user's selections. Once you have your filters set, all you need is conditions in the proper place(s). For this request, I iterated through the object with player's and player IDs. If a player matched the filter, then steps 4, 5, and 6 would execute.</p>
+            <img src="images/getSearch2.PNG" width="100%" alt="getSearch with filters">
+            <br><br>
+            <p>And that's all there is to it. Go forth and collect data!</p>
+            <img src="images/twoPlayers.PNG" width="100%" alt="filter results">
+          </div>  
+          <nav>
+            <ul class="pager">
+              <li><a href="htMake1.html">Previous</a></li>
+            </ul>
+          </nav>
+        </div><!-- /.blog-main -->
+        <div class="col-sm-3 col-sm-offset-1 blog-sidebar">
+          <div class="sidebar-module">
+            <h4>Topic Pages</h4>
+            <ol class="list-unstyled">
+              <li><a href="htGathering.html">Gathering the Parameters</a></li>
+              <li><a href="htURLs.html">Understanding the URLs</a></li>
+              <li><a href="htReturn.html">Understanding the Return</a></li>
+              <li><a href="htCrossDom.html">Cross Domain Requests</a></li>
+              <li><a href="htMake1.html">Making use of the Data Part 1</a></li>
+              <li><a href="htMake2.html">Making use of the Data Part 2</a></li>
+            </ol>
+          </div>
+        </div><!-- /.blog-sidebar -->
+      </div><!-- /.row -->
+    </div><!-- /.container -->
+    <footer class="blog-footer">
+      <p>Page built with <a href="http://getbootstrap.com">Bootstrap</a> by <a href="https://twitter.com/mdo">@mdo</a>.</p>
+      <p>
+        <a href="#">Back to top</a>
+      </p>
+    </footer>
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <script src="../../dist/js/bootstrap.min.js"></script>
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
+  </body>
+</html>

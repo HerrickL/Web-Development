@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="../../favicon.ico">
+    <title>How-To NBA API</title>
+    <!-- Bootstrap core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="htStyle.css" rel="stylesheet">
+    <script src="../../assets/js/ie-emulation-modes-warning.js"></script>
+  </head>
+  <body>
+    <div class="blog-masthead">
+      <div class="container">
+        <nav class="blog-nav">
+          <a class="blog-nav-item" href="htHome.html">Home</a>
+          <a class="blog-nav-item" href="htAbout.html">About</a>
+        </nav>
+      </div>
+    </div>
+    <div>
+    <div class = "larger-container">
+      <div class="blog-header">
+        <h1 class="blog-title">How-To: NBA Stats API</h1>
+        <p class="lead blog-description">Connect with and use the NBA Stats API</p>
+      </div>
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-8 blog-main">
+          <div class="blog-post">
+            <h2 class="blog-post-title">Understanding the Return</h2>
+            <p>Each return will be slightly different based off of your request made using a specific url and parameters, but all will have some of the same characteristics that I will point out below.  This will help you in your coding to set milemarkers for finding the data that you wish to display.</p>
+            <br>
+            <p>To better view each example, hover over it to enlarge it.</p>
+            <h4>Player Profile Example</h4>
+            <p>
+            <img src = "images/Steph.PNG" class="enlarge" width ="100%" alt = "Query Return"> 
+            Here I have provided an example return based off of Stephen Curry.  There are a few areas I would like to point out that will make your handling of these returns a lot easier.  
+            </p>
+            <p>
+            Notice that the url (commonplayerinfo) and the parameters (PlayerID, LeagueID) are all listed. Following that is the "resultSets" which include an array for the header info and an array for the common player info.  Header info displays the titles for each stat.  Following the header info, you will notice "rowSet".  This marks the start of the player's data.  Notice that the common player info appears in the same order as to match the header info.  For example, the second item in header is "FIRST_NAME" while the second item in common player data is "Stephen".  Following the common player info, you will see PlayerHeadlineStats.  This is the same process as above but with generalized data on the player.
+            <p>
+            </p>
+            <br>
+            <h4>All Player Example</h4>
+            <p>
+            <img src = "images/AllPlayer.PNG" class="enlarge" width = "100%" alt = "Query Return">
+            Here is an example return of all of the players listed in the league that were active during the 2014-15 season.  For space purposes, I did not include a full picture of this return.  This return is similar to the above, but now player data is limited and there is more than one player's data.  Let's look at the similarities!
+            </p>
+            <p>
+            Once again the name on the database given to that url and parameters are listed first.  Following, you'll see "resultSets" again, listing.  This works exactly as is it did above.  Headers displays the titles of the data for each player.  Locate "rowSet" and you will notice that this starts the player's data. This time, instead of one array of data, each player has their own array.  This url returns a lot of data and would take a bit more time to grab data from.  The upside is that it offers every player's ID number.  If you do not want to look up all IDs for a dictionary, this would be a great place to grab them in a call prior to finishing your site.  
+            </p>
+            <br>
+            <h4>Team Dashboard by General Splits Example </h4>
+            <p>
+            <img src = "images/boxScore.PNG" class="enlarge" width = "100%" alt = "Query Return">
+            In this final example, I used data from a request based off of a game rather than a player.  As with above, you will notice the url name is identified along with the parameters.  Once you hit "resultSets", you will see the headers for all of the results.  Following this is the first "rowSets" which displays the specifics for GameSummary.  The same is repeated for LineScore, SeasonSeries, and PlayerStats (this is where the example image is cut short, but more data would continue to display).  Similar to common all player data, you will notice that the PlayerStats section arranges data by player per array.
+
+            </p>
+            <br>
+            <h4>Testing Point</h4>
+            <p>Before you move on to the next page, I would suggest using any of the urls from the previous page along with their parameters to view more results.  For practice, choose any of the potential request urls you plan to make on your site.  If the results appear in a way that you would have expected and you can identify the milemarkers listed below, you are ready for the next section! 
+              <br><font size ="2">Potential exercises: get the common player data for Dennis Schroder, or get the play by play of the most recently played game.</font>
+            </p>
+          </div>  
+          <nav>
+            <ul class="pager">
+              <li><a href="htURLs.html">Previous</a></li>
+              <li><a href="htCrossDom.html">Next</a></li>
+            </ul>
+          </nav>
+        </div><!-- /.blog-main -->
+        <div class="col-sm-3 col-sm-offset-1 blog-sidebar">
+          <div class="sidebar-module">
+            <h4>Topic Pages</h4>
+            <ol class="list-unstyled">
+              <li><a href="htGathering.html">Gathering the Parameters</a></li>
+              <li><a href="htURLs.html">Understanding the URLs</a></li>
+              <li><a href="htReturn.html">Understanding the Return</a></li>
+              <li><a href="htCrossDom.html">Cross Domain Requests</a></li>
+              <li><a href="htMake1.html">Making use of the Data Part 1</a></li>
+              <li><a href="htMake2.html">Making use of the Data Part 2</a></li>
+            </ol>
+          </div>
+        </div><!-- /.blog-sidebar -->
+      </div><!-- /.row -->
+    </div><!-- /.container -->
+    <footer class="blog-footer">
+      <p>Page built with <a href="http://getbootstrap.com">Bootstrap</a> by <a href="https://twitter.com/mdo">@mdo</a>.</p>
+      <p>
+        <a href="#">Back to top</a>
+      </p>
+    </footer>
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <script src="../../dist/js/bootstrap.min.js"></script>
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
+  </body>
+</html>
