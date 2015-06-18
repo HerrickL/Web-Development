@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+  <head>
+    <meta charset = "UTF-8">
+    <title>Assignment 3.2</title>
+    <script src="scripts.js"></script>
+  </head>
+  <body>
+    <h1><center>CS290 Assignment 3, part 2</center></h1>
+    <div> </div>
+    <form>
+      <!-- users pick between 1-5 pages of results (this changes total # of results) -->
+      <p>How many pages would you like to view?</p>
+      <select id="pages"> 
+        <option value=1>1</option>
+        <option value=2>2</option>
+        <option value=3>3</option>
+        <option value=4>4</option>
+        <option value=5>5</option>
+      </select>  
+      <!-- users select, via check box, the language of Gists they would like to see.  Must include: Python, JSON, JavaScript, and SQL-->
+      <p>Which languages should be included?</p>
+      <input type="checkbox" id="Python" value="Python">Python<br>
+      <input type="checkbox" id="JSON" value="JSON">JSON<br>
+      <input type="checkbox" id="JavaScript" value="JavaScript">JavaScript<br>
+      <input type="checkbox" id="SQL" value="SQL">SQL<br>
+      <br> 
+      <!-- Search button initiates search-->
+      <input type="button" name="search" onclick="getSearch()" value="Search">
+    </form>
+    <br>
+    <div><h4>Favorites:</h4>
+      <dl id="favorites"></dl><div>
+      <br>
+    <div><h4>Search Results:</h4><dl id="results"></dl></div>
+  </body>
+</html>
