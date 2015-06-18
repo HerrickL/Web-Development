@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="../../favicon.ico">
+    <title>MTG Deck Builder</title>
+    <!-- Bootstrap core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom styles for this template -->
+    <link href="css/jumbotron.css" rel="stylesheet">
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <script src="js/login.js"></script>
+    <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
+    <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
+    <script src="js/ie-emulation-modes-warning.js"></script>
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="home.html">MTG Deck Builder</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+          <form class="navbar-form navbar-right" method="POST">
+            <div class="form-group">
+              <input type="text" id="inputUsername" placeholder="Username" class="form-control">
+            </div>
+            <div class="form-group">
+              <input type="password" id="inputPassword" placeholder="Password" class="form-control">
+            </div>
+            <button type="submit" id="loginBtn" class="btn btn-success" >Sign in</button>
+          </form>
+        </div><!--/.navbar-collapse -->
+      </div>
+    </nav>
+    <span class="errormess"></span>
+    <!-- Main jumbotron for a primary marketing message or call to action -->
+    <div class="jumbotron">
+      <div class="container">
+        <center><h1>Welcome to MTG Deck Builder</h1></center>
+        <p>To begin, simply register an account to access the search and deck-building functionality. Magic: The Gathering is a trading card game played by two or more people using "decks" typically made of 60 cards. One of the most intriguing parts of the game is the ability to construct decks out of the hundreds of thousands of cards available -- this website replicates the art of deckbuilding while also incorporating additional features such as a public forum. </p><br>
+        <p>The card database is graciously adopted from the Cockatrice team at Woogerworks. The information presented on this site about Magic: The Gathering is copyrighted by Wizards of the Coast. This website is not produced, endorsed, supported, or affiliated with Wizards of the Coast.</p>
+         <div class="container">
+           <form class="form-signin">
+            <h2 class="form-signin-heading"><center>Register an Account</center></h2>
+            <label for="regUsername" class="sr-only">Username</label>
+            <input type="username" id="regUsername" class="form-control" placeholder="Username" required autofocus>
+            <label for="regPassword" class="sr-only">Password</label>
+            <input type="password" id="regPassword" class="form-control" placeholder="Password" required>
+            <label for="regEmail" class="sr-only">Email address</label>
+            <input type="email" id="regEmail" class="form-control" placeholder="Email address" required autofocus>
+            <button class="btn btn-lg btn-primary btn-block" id="regBtn" type="submit">Sign in</button>
+            <!-- Ajax error message here-->
+            <span class="errormess2"></span>
+        </form>
+    </div> <!-- /container -->
+      <footer>
+      </footer>
+    </div> <!-- /container -->
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="js/ie10-viewport-bug-workaround.js"></script>
+  </body>
+</html>
