@@ -1,7 +1,7 @@
 <?php
     session_start();
     if(!isset($_SESSION['username'])){
-      header("Location: http://web.engr.oregonstate.edu/~herrickl/assignment6/home.html", true);        die();
+      header("Location: home.html", true);        die();
       exit;
     }
 ?>
